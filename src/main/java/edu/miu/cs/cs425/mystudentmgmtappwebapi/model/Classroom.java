@@ -28,8 +28,8 @@ public class Classroom {
 
     /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id", nullable = false)*/
-    @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
+   /* @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Student> students = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();*/
 
 }

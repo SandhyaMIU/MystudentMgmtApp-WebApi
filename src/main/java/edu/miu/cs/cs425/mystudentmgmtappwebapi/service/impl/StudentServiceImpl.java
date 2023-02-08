@@ -9,13 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     @Override
     public Student saveStudent(Student newStudent) {
@@ -32,6 +35,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
+
         return studentRepository.findAll();
     }
 
@@ -57,14 +61,25 @@ public class StudentServiceImpl implements StudentService {
         return updatedStudent;
     }
 
+//    public Student updateStudent(Student student) {
+//        return studentRepository.save(student);
+//    }
     @Override
-    public Student updateStudent(Student student) {
-        return studentRepository.save(student);
+    public Student updateStudent(StudentRequest updatedStudentReq, Long studentId) {
+        Student updatedStudent = Student.build(studentId, updatedStudentReq.getStudentNumber(),updatedStudentReq.getFirstName(),updatedStudentReq.getMiddleName(),
+                updatedStudentReq.getLastName(),updatedStudentReq.getCgpa(),updatedStudentReq.getDateOfEnrollment(),updatedStudentReq.isInternalional());
+        return studentRepository.save(updatedStudent);
     }
 
 
     @Override
     public void deleteStudentById(Long studentId) {
-            studentRepository.deleteById(studentId);
+
+        studentRepository.deleteById(studentId);
+    }
+
+    @Override
+    public Student searchStudentByName(String nameStart) {
+        return studentRepository.getStudentWhereFirstNameStartsWith(nameStart).orElse(null);
     }
 }

@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatusCode;
 
 import java.time.LocalDate;
 
 @Entity
 @Table (name = "students")
-//@AllArgsConstructor(staticName = "build")
-public class Student {
+@AllArgsConstructor(staticName = "build")
+public class Student{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentId;
@@ -172,6 +173,7 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", cgpa=" + cgpa + '\'' +
                 ", dateOfEnrollment=" + dateOfEnrollment + '\'' +
+                ", isInternational='" + isInternalional + '\'' +
               /*  ", primaryTranscript=" + primaryTranscript + '\'' +
                 ", classroom=" + classroom + '\'' +*/
                 '}';

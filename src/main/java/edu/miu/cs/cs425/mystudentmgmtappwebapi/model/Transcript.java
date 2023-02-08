@@ -21,9 +21,9 @@ public class Transcript {
 
     private String degreeTitle;
 
-    @OneToOne(mappedBy = "primaryTranscript")
+    /*@OneToOne(mappedBy = "primaryTranscript")
     @JsonIgnore
-    private Student student;
+    private Student student;*/
 
 
     @Override

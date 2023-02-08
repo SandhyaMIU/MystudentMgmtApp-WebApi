@@ -21,10 +21,18 @@ public interface StudentService {
 
     Student updateStudentById(Long studentId, Student editedStudent);
 
-    Student updateStudent(Student student);
+//    Student updateStudent(Student student);
 
+
+    //    public Student updateStudent(Student student) {
+    //        return studentRepository.save(student);
+    //    }
+    Student updateStudent(StudentRequest updatedStudentReq, Long studentId);
 
     void deleteStudentById(Long studentId);
+
+    Student searchStudentByName(String nameStart);
+
 
 
 }
